@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center>
+        <nav>
+
+            <h1> Calci App</h1>
+            <form onsubmit="find(event)">
+
+                <input type="Number" step="any" placeholder="Enter the Number" id="num">
+                <br /><br />
+                <input type="Submit" Value="Square" id="sq" />
+                <input type="Submit" Value="Cube" id="cb" />
+                <input type="Submit" Value="Square Root" id="sqrt" />
+
+            </form>
+            <footer>
+                <h2 id="msg"></h2>
+            </footer>
+
+        </nav>
+        <script> 
+                function find(event) {
+                event.preventDefault();
+                let num = document.getElementById("num");
+                let msg = document.getElementById("msg");
+                let operation = event.submitter.value;
+                let n = parseFloat(num.value);
+
+                if (num.value === "") {
+                    alert("You Didnot Enter a Number");
+                    msg.innerHTML = "";
+                    num.focus();
+                    return;
+                }
+                let r;
+
+                if (operation === "Square") {
+                    r = n * n;
+                    let a = "Square " + r.toFixed(2);
+                    msg.innerHTML = a;
+                }
+                else if (operation === "Cube") {
+                    r = n * n * n;
+                    let a = "Cube " + r.toFixed(2);
+                    msg.innerHTML = a;
+                }
+                else if (operation === "Square Root") {
+                    if (num.value < 0) {
+                        alert("Square root is not defined for negative numbers");
+                        msg.innerHTML = "";
+                        num.focus();
+                        return;
+                    }
+                    r = Math.sqrt(n);
+                    let a = "Square Root " + r.toFixed(2);
+                    msg.innerHTML = a;
+
+                }
+            }
+        </script>
+    </center>
+
+</body>
+
+</html>
